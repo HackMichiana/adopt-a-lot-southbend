@@ -16,6 +16,21 @@ block content
 
   #formContainer.container
     .row
+      .col-md-12
+        form
+          .form-group
+            label(for="firstName") First Name
+            input#firstName.form-control(type="text")
+          .form-group
+            label(for="lastName") Last Name
+            input#lastName.form-control(type="text")
+          .form-group
+            label(for="email") Email
+            input#email.form-control(type="text")
+          .form-group
+            label(for="date") Date
+            input#date.form-control(type="date")
+          button.btn.btn-primary(type="button", data-bind="click: submitForm") Submit
 
 
 block scripts

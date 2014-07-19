@@ -7,6 +7,10 @@ var searchViewModel = function () {
     //callback: fill in map data...
   };
 
+  model.submitForm = function () {
+    alert('Thank you!!!')
+  };
+
   return model;
 };
 
