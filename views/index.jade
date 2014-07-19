@@ -4,11 +4,12 @@ block content
   h1= title
   #search.container
     #searchSection.row
-       .col-md-12
+      .col-md-12
         input(type="text",data-bind="value: searchContent",placeholder="Enter address or ZIP here...")
         input.btn.btn-primary(type="button",data-bind="click: search")
     #mapSection.row
-      //put the map here
+      .col-md-12
+        //put the map here
 
 block scripts
   script(type='text/javascript',src='/js/site.js')
