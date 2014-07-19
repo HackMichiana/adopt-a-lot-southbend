@@ -1,16 +1,19 @@
 extends layout
 
 block content
-  h1= title
-  #search.container
-    #searchSection.row
-      .col-md-12
+  #searchContainer.container
+    .row
+      #welcomeContainer.col-md-6.col-sm-12
+        h1 Welcome to Adopt-A-Lot South Bend
+      #searchBoxContainer.col-md-3.col-sm.12
         input(type="text",data-bind="value: searchContent",placeholder="Enter address or ZIP here...")
-        input.btn.btn-primary(type="button",data-bind="click: search")
-    #mapSection.row
+      #searchButtonContainer.col-md-3.col-sm-12
+        input.btn.btn-primary(type="button",data-bind="click: search") Search
+  #mapContainer.container
+    .row
       .col-md-12
         //put the map here
 
 block scripts
-  script(type='text/javascript',src='/js/site.js')
+  script(type='text/javascript',src='/js/search.js')
 
