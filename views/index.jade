@@ -8,7 +8,7 @@ block content
       #searchBoxContainer.col-md-3.col-sm.12
         input(type="text",data-bind="value: searchContent",placeholder="Enter address or ZIP here...")
       #searchButtonContainer.col-md-3.col-sm-12
-        input.btn.btn-primary(type="button",data-bind="click: search") Search
+        input.btn.btn-primary(type="button",data-bind="click: search", value="Search")
   #mapContainer.container
     .row
       .col-md-12
@@ -18,4 +18,3 @@ block content
 
 block scripts
   script(type='text/javascript',src='/js/search.js')
-
