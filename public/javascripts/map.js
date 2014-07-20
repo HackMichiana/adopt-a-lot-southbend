@@ -1,3 +1,32 @@
+var EntryModel = Backbone.Model.extend({
+    infoWindowTemplate: _.template($('#map_entry_info_window_template').html()),
+    idAttribute: 'state_parcel_id',
+
+    // Display the entry info in the map InfoWindow
+    displayInfoWindow: function(marker) {
+        infoWindow.setContent(this.infoWindowTemplate(this.toJSON()));    // render template
+        infoWindow.open(map, marker);
+    }
+});
+siteData = new Backbone.Collection([], {model: EntryModel});
+
+
+
+var FormView = Backbone.View.extend({
+    el: '#formContainer',
+    initialize: function(options) {
+        this.listenTo(siteData, 'selected', this.handleItemSelected);
+    },
+    handleItemSelected: function(model) {
+        this.$('#stateParcelID').val(model.id);
+    }
+});
+
+
+
+
+
+
 $(window).load(function() {
     // Construct the catalog query string
     url = 'http://data.southbendin.gov/resource/d2un-9vvp.json?$$app_token=CGxaHQoQlgQSev4zyUh5aR5J3';
@@ -10,27 +39,7 @@ $(window).load(function() {
     }
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     infoWindow = new google.maps.InfoWindow();
-
-
-
-    var EntryModel = Backbone.Model.extend({
-        infoWindowTemplate: _.template($('#map_entry_info_window_template').html()),
-        idAttribute: 'state_parcel_id',
-
-        // Display the entry info in the map InfoWindow
-        displayInfoWindow: function(marker) {
-            infoWindow.setContent(this.infoWindowTemplate(this.toJSON()));    // render template
-            infoWindow.open(map, marker);
-        }
-    });
-
-
-    siteData = new Backbone.Collection([], {model: EntryModel});
-
-
-
-
-
+    formView = new FormView();
 
     // Retrieve our data and plot it
     $.getJSON(url, function(data, textstatus) {
@@ -48,7 +57,9 @@ $(window).load(function() {
 
               // Display info for entry on marker click
               google.maps.event.addListener(marker, 'click', function() {
-                  siteData.get(marker.id).displayInfoWindow(marker);
+                  var model = siteData.get(marker.id)
+                  model.displayInfoWindow(marker);
+                  siteData.trigger('selected', model);
               });
           });
     });
