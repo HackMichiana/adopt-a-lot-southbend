@@ -41,6 +41,9 @@ $(window).load(function() {
     infoWindow = new google.maps.InfoWindow();
     formView = new FormView();
 
+
+    google.maps.event.addListener(map, 'click', function() { infoWindow.close(); });
+
     // Retrieve our data and plot it
     $.getJSON(url, function(data, textstatus) {
           console.log('Data retrieved');
