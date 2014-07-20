@@ -1,14 +1,15 @@
 extends layout
 
 block content
-  #searchContainer.container
+  #topContainer.container
     .row
-      #welcomeContainer.col-md-6.col-sm-12
-        h1 Welcome to Adopt-A-Lot South Bend
-      #searchBoxContainer.col-md-3.col-sm.12
-        input(type="text",data-bind="value: searchContent",placeholder="Enter address or ZIP here...")
-      #searchButtonContainer.col-md-3.col-sm-12
-        input.btn.btn-primary(type="button",data-bind="click: search", value="Search")
+      #welcomeContainer.col-md-8
+        h2 Welcome to Adopt-A-Lot South Bend
+      #searchContainer.col-md-4.text-right
+        input#searchBox(type="text",data-bind="value: searchContent",placeholder="Enter address or ZIP here...")
+        | 
+        input#searchBtn.btn.btn-primary(type="button",data-bind="click: search", value="Search")
+
   #mapContainer.container
     .row
       .col-md-12

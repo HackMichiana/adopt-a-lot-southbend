@@ -15,11 +15,11 @@ siteData = new Backbone.Collection([], {model: EntryModel});
 var SearchView = Backbone.View.extend({
     el: '#searchContainer',
     events: {
-        'keypress #searchBoxContainer input': 'enterHandler',
-        'click #searchButtonContainer input': 'search'
+        'keypress #searchBox': 'enterHandler',
+        'click #searchBtn': 'search'
     },
     search: function() {
-        var addr = this.$('#searchBoxContainer input').val();
+        var addr = this.$('#searchBox').val();
         if(addr) {
             // attempt to geocode the input
             // TODO: Restrict to region
