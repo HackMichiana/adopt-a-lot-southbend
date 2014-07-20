@@ -12,6 +12,31 @@ siteData = new Backbone.Collection([], {model: EntryModel});
 
 
 
+var SearchView = Backbone.View.extend({
+    el: '#searchContainer',
+    events: {
+        'keypress #searchBoxContainer input': 'enterHandler',
+        'click #searchButtonContainer input': 'search'
+    },
+    search: function() {
+        var addr = this.$('#searchBoxContainer input').val();
+        if(addr) {
+            // attempt to geocode the input
+            // TODO: Restrict to region
+            geocoder.geocode( { 'address': addr }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    },
+    enterHandler: function(e) {
+        if(e.keyCode == 13) { this.search(); }
+    }
+});
+
 var FormView = Backbone.View.extend({
     el: '#formContainer',
     initialize: function(options) {
@@ -37,9 +62,11 @@ $(window).load(function() {
       zoom: 14,
       center: center
     }
-    map = new google.maps.Map(document.getElementById("map"), mapOptions);
     infoWindow = new google.maps.InfoWindow();
+    geocoder = new google.maps.Geocoder();
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
     formView = new FormView();
+    searchView = new SearchView();
 
 
     google.maps.event.addListener(map, 'click', function() { infoWindow.close(); });
