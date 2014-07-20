@@ -1,0 +1,20 @@
+script#map_entry_info_window_template(type="text/underscore-template")
+    dl.dl-horizontal
+
+        dt State Parcel ID
+        dd <%= state_parcel_id %>
+
+        dt Parcel ID
+        dd <%= parcel_id %>
+
+        dt Address
+        dd
+            | <%= house_number %> <%= street %><br>
+            | South Bend, IN <%= zip_code %><br>
+            | <%= location_1.latitude %>, <%= location_1.longitude %>
+
+        dt Status
+        dd <%= status %>
+
+        dt Neighborhood Market Condition
+        dd <%= neighborhood_market_condition %>
