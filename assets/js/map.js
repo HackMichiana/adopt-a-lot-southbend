@@ -1,12 +1,12 @@
 function initialize() {
 
-  mapview = new adoptalot.MapView();
-  mapview.render();
-
   lots = new adoptalot.LotCollection();
+  mapview = new adoptalot.MapView({lots: lots});
   lotslist = new adoptalot.LotListView({collection: lots});
+
+  mapview.render();
   lotslist.render();
-  lots.fetch();
+  lots.fetch({data: {limit: 500}});
 }
 
 $(document).ready(initialize);
