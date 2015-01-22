@@ -2,22 +2,14 @@ doctype html
 html
   head
     title= title
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='/stylesheets/reset.css')
-    link(href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", rel="stylesheet")
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    //block styles
+
+    // Viewport mobile tag for sensible mobile support
+    meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
+
+    block styles
+
   body
-    #siteContainer
-      #siteHeader
-      #siteContentContainer
-        block content
-      #siteFooter
-  script(type='text/javascript',src='//code.jquery.com/jquery-1.11.1.min.js')
-  script(type='text/javascript',src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js')
-  script(type='text/javascript',src='//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js')
-  script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
-  script(src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js")
-  script(type='text/javascript',src='/js/site.js')
-  script(type='text/javascript', src='//maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyCUmiiwz4__nY4fYEMV68Dcn7bHz0ngL4M')
-  block scripts
+    block body
+
+    script(src="/js/dependencies/sails.io.js")
+    block scripts

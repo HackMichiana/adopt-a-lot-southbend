@@ -1,9 +1,25 @@
-adopt-a-lot-southbend
-=====================
+# Hack-Michiana-Mowing
 
-Hack Michiana 2014 project to allow citizens to sign up to care for vacant/abandoned properties in South Bend, IN
+a [Sails](http://sailsjs.org) application
 
+# Development
 
+Requirements
+
+* Node.js
+* npm
+* MongoDB
+
+Installation
+
+    git clone https://github.com/HackMichiana/adopt-a-lot-southbend.git
+    cd adopt-a-lot-southbend/
+    npm install -g sails bower
     npm install
-    npm install -g knex
-    node bin/www
+    bower install
+    mongoimport --db adoptalot --collection lots_data --file socrata-data.json --jsonArray
+    sails lift  # with mongodb running
+
+# Load data
+
+    mongoimport --db adoptalot --collection lots_data --file socrata-data.json --jsonArray
