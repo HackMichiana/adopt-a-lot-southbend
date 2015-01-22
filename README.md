@@ -1,5 +1,7 @@
 # Hack-Michiana-Mowing
 
+# THIS BRANCH IS DEPRECATED. SEE MASTER!
+
 a [Sails](http://sailsjs.org) application
 
 # Development
