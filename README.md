@@ -1,8 +1,8 @@
 # Hack-Michiana-Mowing
 
-# THIS BRANCH IS DEPRECATED. SEE MASTER!
-
 a [Sails](http://sailsjs.org) application
+
+See https://github.com/HackMichiana/Organization/wiki/Adopt-a-Lot-South-Bend for info.
 
 # Development
 
